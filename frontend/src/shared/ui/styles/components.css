@@ -1,0 +1,23 @@
+.flex-between{
+    @apply flex justify-between items-center;
+}
+
+.animate{
+    @apply transition-all duration-500 ease-in-out;
+}
+
+.link{
+      @apply transition-all duration-500 ease-in-out  font-bold text-[16px] tracking-wide bg-gradient-to-r from-pink-800 to-black bg-clip-text text-transparent hover:from-pink-600 hover:to-blue-500 hover:scale-110 ;
+}
+
+.container{
+    @apply max-w-[1120px] mx-auto my-0;
+}
+
+.button{
+    @apply appearance-none border-2 bg-gradient-to-r from-pink-800 to-black  text-main hover:from-pink-600 hover:to-blue-500 hover:scale-110 transition-colors duration-300
+}
+
+.input{
+    @apply border border-2 appearance-none rounded w-full px-3 py-2 placeholder-gray-500 text-primary bg-white outline-none text-[16px] 
+}
