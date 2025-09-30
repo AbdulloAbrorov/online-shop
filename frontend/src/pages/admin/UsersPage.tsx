@@ -124,30 +124,31 @@ const UsersPage = () => {
           <h3 className="text-lg font-medium mb-2">Edit User</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <input
+            
               type="text"
               placeholder="First Name"
               value={form.firstName || ""}
               onChange={(e) => setForm({ ...form, firstName: e.target.value })}
-              className="border px-2 py-1 rounded"
+              className="border px-2 py-1 rounded input"
             />
             <input
               type="text"
               placeholder="Last Name"
               value={form.lastName || ""}
               onChange={(e) => setForm({ ...form, lastName: e.target.value })}
-              className="border px-2 py-1 rounded"
+              className="border px-2 py-1 rounded input"
             />
             <input
               type="email"
               placeholder="Email"
               value={form.email || ""}
               onChange={(e) => setForm({ ...form, email: e.target.value })}
-              className="border px-2 py-1 rounded"
+              className="border px-2 py-1 rounded input"
             />
             <select
               value={form.role || ""}
               onChange={(e) => setForm({ ...form, role: e.target.value as "ADMIN" | "USER" })}
-              className="border px-2 py-1 rounded"
+              className="border px-2 py-1 rounded input"
             >
               <option value="">Select role</option>
               <option value="ADMIN">ADMIN</option>
@@ -155,10 +156,10 @@ const UsersPage = () => {
             </select>
           </div>
           <div className="mt-4 flex gap-2">
-            <button onClick={saveEdit} className="bg-blue-500 text-white px-4 py-2 rounded">
+            <button onClick={saveEdit} className="button px-4 py-2 rounded b">
               Save
             </button>
-            <button onClick={() => setEditingUser(null)} className="bg-gray-400 text-white px-4 py-2 rounded">
+            <button onClick={() => setEditingUser(null)} className="bg-red-800 text-white px-4 py-2 rounded">
               Cancel
             </button>
           </div>
