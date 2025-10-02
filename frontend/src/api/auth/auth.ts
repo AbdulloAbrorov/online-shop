@@ -2,6 +2,7 @@ import api from "../../config/api";
 import { User } from "../../types";
 import type { LoginData } from "./type-login";
 import type { RegisterData } from "./type-register";
+import { parseError } from "./parse-error";
 
 export const register = async (data: RegisterData) => {
   try {
@@ -12,23 +13,7 @@ export const register = async (data: RegisterData) => {
     }>("/auth/register", data);
     return response.data;
   } catch (error: unknown) {
-    let errorMessage = "Registration failed";
-
-    if (error instanceof Error) {
-      errorMessage = error.message;
-    } else if (
-      typeof error === "object" &&
-      error !== null &&
-      "response" in error
-    ) {
-      const err = error as {
-        response?: { data?: { message?: string | string[] } };
-      };
-      const msg = err.response?.data?.message;
-      if (msg) errorMessage = Array.isArray(msg) ? msg[0] : msg;
-    }
-
-    throw new Error(errorMessage);
+throw new Error(parseError(error, "Registration failed"));
   }
 };
 
@@ -41,23 +26,7 @@ export const login = async (data: LoginData) => {
     }>("/auth/login", data);
     return response.data;
   } catch (error: unknown) {
-    let errorMessage = "Login failed";
-
-    if (error instanceof Error) {
-      errorMessage = error.message;
-    } else if (
-      typeof error === "object" &&
-      error !== null &&
-      "response" in error
-    ) {
-      const err = error as {
-        response?: { data?: { message?: string | string[] } };
-      };
-      const msg = err.response?.data?.message;
-      if (msg) errorMessage = Array.isArray(msg) ? msg[0] : msg;
-    }
-
-    throw new Error(errorMessage);
+   throw new Error(parseError(error, "Login failed"));
   }
 };
 
