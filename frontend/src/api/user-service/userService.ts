@@ -1,19 +1,8 @@
 import api from "../../config/api";
 import { User } from "../../types/user";
-import { AxiosError } from "axios";
+import { handleApiError } from "./api-error";
 
-const handleApiError = (error: unknown, defaultMessage: string): never => {
-  let errorMessage = defaultMessage;
 
-  if (error instanceof AxiosError) {
-    const msg = error.response?.data?.message;
-    if (msg) errorMessage = Array.isArray(msg) ? msg[0] : msg;
-  } else if (error instanceof Error) {
-    errorMessage = error.message;
-  }
-
-  throw new Error(errorMessage);
-};
 
 export const userService = {
   getAllUsers: async (): Promise<User[]> => {
@@ -40,22 +29,6 @@ export const userService = {
       return response.data;
     } catch (error) {
       throw handleApiError(error, "Failed to update profile");
-    }
-  },
-
-  changePassword: async (
-    userId: number,
-    currentPassword: string,
-    newPassword: string
-  ): Promise<{ success: boolean }> => {
-    try {
-      const response = await api.post<{ success: boolean }>(
-        `/users/${userId}/change-password`,
-        { currentPassword, newPassword }
-      );
-      return response.data;
-    } catch (error) {
-      throw handleApiError(error, "Failed to change password");
     }
   },
 

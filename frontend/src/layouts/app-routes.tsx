@@ -4,7 +4,7 @@ import { RegisterForm } from "../pages/register-form/register-form";
 import AdminLayout from "../layouts/AdminLayout";
 import Dashboard from "../pages/admin/Dashboard";
 import UsersPage from "../pages/admin/UsersPage";
-import Navbar from "../components/Navbar";
+import{ Navbar} from "../components/navbar/Navbar";
 import Home from "../pages/Home";
 import { Products } from "../pages/products/Products";
 import Cart from "../pages/Cart";
